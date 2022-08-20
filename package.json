@@ -1,0 +1,24 @@
+{
+  "name": "opswat-simple-scanner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yu-Jun-Zhao/opswat-simple-scanner.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bin": {
+    "opswat-scan": "./bin/index.js"
+  },
+  "bugs": {
+    "url": "https://github.com/Yu-Jun-Zhao/opswat-simple-scanner/issues"
+  },
+  "homepage": "https://github.com/Yu-Jun-Zhao/opswat-simple-scanner#readme"
+}
