@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/Yu-Jun-Zhao/opswat-simple-scanner.git"
   },
+  "engines": {
+    "node": ">=16.17.0"
+  },
   "keywords": [],
   "author": "",
   "license": "MIT",
@@ -20,5 +23,10 @@
   "bugs": {
     "url": "https://github.com/Yu-Jun-Zhao/opswat-simple-scanner/issues"
   },
-  "homepage": "https://github.com/Yu-Jun-Zhao/opswat-simple-scanner#readme"
+  "homepage": "https://github.com/Yu-Jun-Zhao/opswat-simple-scanner#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "got": "^12.3.1",
+    "lodash": "^4.17.21"
+  }
 }
