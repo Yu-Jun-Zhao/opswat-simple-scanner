@@ -48,7 +48,7 @@ async function app() {
 		const dataId = analyzeFileResponse["data_id"];
 		console.log("Submitted file and data_id:", dataId);
 
-		console.log("Getting analysis report");
+		console.log("Getting analysis");
 		const pollIntervalMS = Number(process.env.API_FETCH_INTERVAL_IN_MS) || 100;
 		const analyzedResult = await apiPolling(
 			async () => {
