@@ -14,7 +14,7 @@ API endpoints used by the program: `GET /hash/{hash}`, `POST /file`, `GET /file/
 5. Install the Node application with `npm install -g .`
 
 
-## Instruction
+## Instructions
 
 The command for this program: `opswat-scan`. <br>
 Arguments to be passed in: `filepath`. (relative or absolute) <br>
