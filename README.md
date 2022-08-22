@@ -3,7 +3,7 @@
 A simple command-line program that utilized Opswat MetaDefender Cloud v4 API. Basic functionalities: hash look-up and file scanning. <br>
 API endpoints used by the program: `GET /hash/{hash}`, `POST /file`, `GET /file/{dataId}`
 
-## Installation (Linux - Ubuntu 20)
+## Installation (Linux - Ubuntu 20.04)
 
 1. Install Node.js 16.17 or above.
 2. Clone Repo and `cd` into the project repo.
