@@ -1,4 +1,12 @@
-import { ApiBadRequestError, ApiUnauthorizedError, ApiInternalServerError } from "./error.js";
+import has from "lodash/has.js";
+import get from "lodash/get.js";
+import round from "lodash/round.js";
+import {
+	ApiBadRequestError,
+	ApiUnauthorizedError,
+	ApiNotFoundError,
+	ApiInternalServerError,
+} from "./error.js";
 
 // log results in console
 export function displayReport(fileName, result) {
@@ -36,6 +44,7 @@ function displayScanDetails(scanDetails) {
 const errorMap = new Map([
 	[400, ApiBadRequestError],
 	[401, ApiUnauthorizedError],
+	[404, ApiNotFoundError],
 	[500, ApiInternalServerError],
 ]);
 
@@ -48,4 +57,30 @@ export function getApiError(statusCode, body) {
 		return new CustomError(errorMessages[0]);
 	}
 	return new Error("Unknown Error");
+}
+
+function sleepForMilliSecond(ms) {
+	return new Promise((resolve) => setTimeout(resolve, round(ms)));
+}
+
+// Basic util function for polling a certain API
+export async function apiPolling(asyncCallback, ms, pathKey, match) {
+	if (typeof asyncCallback !== "function") {
+		return;
+	}
+
+	while (true) {
+		let data = await asyncCallback();
+		if (has(data, pathKey)) {
+			const val = get(data, pathKey);
+
+			console.log(`${pathKey}: ${val}`);
+
+			if (val == match) {
+				return data;
+			}
+		}
+
+		await sleepForMilliSecond(ms);
+	}
 }

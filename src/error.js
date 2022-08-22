@@ -27,6 +27,13 @@ export class ApiUnauthorizedError extends ApiHttpError {
 	}
 }
 
+export class ApiNotFoundError extends ApiHttpError {
+	constructor(errorMessage) {
+		super(404, errorMessage);
+		this.name = "ApiNotFoundError";
+	}
+}
+
 export class ApiInternalServerError extends ApiHttpError {
 	constructor(errorMessage) {
 		super(500, errorMessage);
