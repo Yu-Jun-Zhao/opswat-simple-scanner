@@ -4,7 +4,7 @@ import { FormData } from "formdata-node";
 
 import { getApiError } from "./util.js";
 
-const apiClient = got.extend({
+let apiClient = got.extend({
 	prefixUrl: "https://api.metadefender.com/v4/",
 	responseType: "json",
 	throwHttpErrors: false,
@@ -12,6 +12,18 @@ const apiClient = got.extend({
 		apiKey: process.env.API_KEY,
 	},
 });
+
+export function extendApiClientHeaders(options) {
+	if (options["content-type"] === "multipart/form-data") {
+		delete options["content-type"];
+	}
+
+	apiClient = apiClient.extend({
+		headers: {
+			...options,
+		},
+	});
+}
 
 export async function getHashReport(hash) {
 	const data = await apiClient.get(`hash/${hash}`);

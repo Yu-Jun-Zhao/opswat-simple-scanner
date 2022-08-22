@@ -1,3 +1,4 @@
+import arg from "arg";
 import has from "lodash/has.js";
 import get from "lodash/get.js";
 import round from "lodash/round.js";
@@ -57,6 +58,20 @@ export function getApiError(statusCode, body) {
 		return new CustomError(errorMessages[0]);
 	}
 	return new Error("Unknown Error");
+}
+
+export function parseArgs(processArgv) {
+	const args = arg(
+		{
+			"-d": arg.COUNT,
+		},
+		{ argv: processArgv.slice(2)}
+	);
+
+	return {
+		useDefaultHeaders: args['-d'] > 0 ? true : false,
+		filePath: args._[0]
+	}
 }
 
 function sleepForMilliSecond(ms) {
