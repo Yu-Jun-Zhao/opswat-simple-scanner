@@ -28,7 +28,7 @@ To test out the program: in the current repo, simply enter `opswat-scan ./test-f
 
 How to change Content-type or set optional headers for the file scan: <br>
 1. Leave the flag `-d` off and simply enter `opswat-scan <file_path>`. 
-2. Before it file scans with the API (`/file`), it will allow you to choose the content-type and set the optional headers. (Note: currently, the only **optional** header supported is **rescan_count**. For full list of headers: [click here](https://docs.opswat.com/mdcloud/metadefender-cloud-api-v4/ref#file-upload)) 
+2. Before it scans with the API (`/file`), it will allow you to choose the content-type and set the optional headers. (Note: currently, the only **optional** header supported is **rescan_count**. For full list of headers: [click here](https://docs.opswat.com/mdcloud/metadefender-cloud-api-v4/ref#file-upload)) 
 ![prompt_headers](https://user-images.githubusercontent.com/36460791/185956313-47f4e2c9-bfa6-4c91-8f14-3734ac223988.png)
 
 Once the file is submitted for scanning, the program will continuously call the `GET /file/{dataId}` for the report. You may see something like this. <br>
