@@ -2,6 +2,12 @@ import crypto from "crypto";
 import fs from "fs";
 import { HashFailureError } from "./error.js";
 
+/**
+ * 
+ * @param {string} file - path to the file 
+ * @param {string} algorithm - sha256, sha1, md5
+ * @returns {string} - the hash in hex format
+ */
 export function hashFile(file, algorithm = "sha256") {
 	try {
 		const dataBuffer = fs.readFileSync(file);

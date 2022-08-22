@@ -9,7 +9,11 @@ import {
 	ApiInternalServerError,
 } from "./error.js";
 
-// log results in console
+/**
+ * For logging the report.
+ * @param {string} fileName - name of the uploaded file
+ * @param {object} result - the report
+ */
 export function displayReport(fileName, result) {
 	console.log("Report found.");
 	console.log("filename:", fileName);
@@ -49,6 +53,7 @@ const errorMap = new Map([
 	[500, ApiInternalServerError],
 ]);
 
+
 export function getApiError(statusCode, body) {
 	if (errorMap.has(statusCode)) {
 		const CustomError = errorMap.get(statusCode);
@@ -60,6 +65,11 @@ export function getApiError(statusCode, body) {
 	return new Error("Unknown Error");
 }
 
+/**
+ * For getting the flag and filePath
+ * @param {string[]} processArgv - process.argv 
+ * @returns {object} 
+ */
 export function parseArgs(processArgv) {
 	const args = arg(
 		{
@@ -78,7 +88,15 @@ function sleepForMilliSecond(ms) {
 	return new Promise((resolve) => setTimeout(resolve, round(ms)));
 }
 
-// Basic util function for polling a certain API
+/**
+ * Keeps calling the async function until the data contains the match.
+ * When value of data[pathKey] matches the match, stop polling
+ * @param {function} asyncCallback - an async function to be called every ms 
+ * @param {number} ms - millisecond
+ * @param {string} pathKey - path to find the key in the data
+ * @param {string | number} match - for defining when to stop polling
+ * @returns 
+ */
 export async function apiPolling(asyncCallback, ms, pathKey, match) {
 	if (typeof asyncCallback !== "function") {
 		return;

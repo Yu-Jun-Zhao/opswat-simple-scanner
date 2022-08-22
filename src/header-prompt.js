@@ -1,7 +1,6 @@
 import inquirer from "inquirer";
 import isFinite from "lodash/isFinite.js";
 import toNumber from "lodash/toNumber.js";
-import round from "lodash/round.js";
 
 const questions = [
 	{
